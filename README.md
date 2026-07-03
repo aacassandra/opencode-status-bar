@@ -19,9 +19,9 @@
 > Built so you can tab away during a long thinking stretch and see, at a glance, whether OpenCode is working, waiting on you, or done.
 
 <p align="center">
-  <img width="600" alt="OpenCode Status Bar v1.1.4" src="https://raw.githubusercontent.com/aacassandra/opencode-status-bar/main/assets/screenshot-v1.1.4.png" />
+  <img width="600" alt="OpenCode Status Bar" src="https://raw.githubusercontent.com/aacassandra/opencode-status-bar/main/assets/preview-img.png" />
   <br>
-  <em>↑ v1.1.2 — NVMe detection, System Style toggle, timer continuity, system widget</em>
+  <em>↑ System widget, NVMe detection, timer continuity</em>
 </p>
 
 <p align="center">
