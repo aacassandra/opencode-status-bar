@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/macOS-12%2B-brightgreen" alt="macOS 12+">
   <img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT">
-  <img src="https://img.shields.io/badge/version-1.1.3-orange" alt="Version 1.1.3">
+  <img src="https://img.shields.io/badge/version-1.1.4-orange" alt="Version 1.1.4">
   <img src="https://img.shields.io/badge/arch-arm64%20%7C%20x86__64-lightgrey" alt="Universal Binary">
   <img src="https://img.shields.io/badge/Swift-5-orange" alt="Swift 5">
   <img src="https://img.shields.io/badge/Bun-Typescript-14151a" alt="Bun">
@@ -19,7 +19,7 @@
 > Built so you can tab away during a long thinking stretch and see, at a glance, whether OpenCode is working, waiting on you, or done.
 
 <p align="center">
-  <img width="600" alt="OpenCode Status Bar v1.1.3" src="https://raw.githubusercontent.com/aacassandra/opencode-status-bar/main/assets/screenshot-v1.1.3.png" />
+  <img width="600" alt="OpenCode Status Bar v1.1.4" src="https://raw.githubusercontent.com/aacassandra/opencode-status-bar/main/assets/screenshot-v1.1.4.png" />
   <br>
   <em>↑ v1.1.2 — NVMe detection, System Style toggle, timer continuity, system widget</em>
 </p>
@@ -160,6 +160,10 @@ App not showing? Plugin not installed?
 ---
 
 ## 📋 Changelog
+
+### v1.1.4
+- **Permission pulse**: slow breathing animation with permission color, isolated frame counter
+- **Update check cooldown**: reduced from 24h to 1h for faster update detection
 
 ### v1.1.3
 - **Permission pulse**: waiting permission state animates with pulse icon, honoring permission color

@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 
 APP_NAME="OpenCodeStatusBar"
 APP_PATH="build/$APP_NAME.app"
-VERSION="1.1.3"
+VERSION="1.1.4"
 DMG_NAME="build/${APP_NAME}-${VERSION}.dmg"
 STAGING="build/dmg-staging"
 DMG_TMP="build/${APP_NAME}-tmp.dmg"
