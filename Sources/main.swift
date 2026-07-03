@@ -420,6 +420,7 @@ final class StatusController: NSObject, NSMenuDelegate {
     var spinTimer: Timer?
     var spinAngle: CGFloat = 0
     var frameIdx = 0
+    var pulseFrame = 0
 
     var stalePruneAge: TimeInterval { UserDefaults.standard.object(forKey: "hideIdleAfter") as? Double ?? 1800 }
 
@@ -855,7 +856,7 @@ final class StatusController: NSObject, NSMenuDelegate {
     func checkForUpdate() {
         let d = UserDefaults.standard
         let now = Date().timeIntervalSince1970
-        if now - d.double(forKey: "lastUpdateCheck") < 86400 { return }
+        if now - d.double(forKey: "lastUpdateCheck") < 3600 { return }
         guard let url = URL(string: releaseAPIURL) else { return }
         var req = URLRequest(url: url)
         req.setValue("OpenCodeStatusBar", forHTTPHeaderField: "User-Agent")
@@ -1945,6 +1946,7 @@ final class StatusController: NSObject, NSMenuDelegate {
         UserDefaults.standard.set(raw, forKey: "animStyle")
         animTimer?.invalidate(); animTimer = nil
         frameIdx = 0
+        pulseFrame = 0
         evaluate()
     }
 
@@ -2513,6 +2515,7 @@ final class StatusController: NSObject, NSMenuDelegate {
         } else {
             animTimer?.invalidate(); animTimer = nil
             frameIdx = 0
+            pulseFrame = 0
             button.image = dot ? dotIcon(color: color) : restingIcon(color: color)
         }
         applyTitle()
@@ -2522,7 +2525,8 @@ final class StatusController: NSObject, NSMenuDelegate {
     func animStep() {
         frameIdx = (frameIdx + 1) % frameCount
         if forcePulse {
-            statusItem.button?.image = pulseIcon(frame: frameIdx, color: activeColor)
+            pulseFrame += 1
+            statusItem.button?.image = pulseIcon(frame: pulseFrame, color: activeColor)
         } else {
             statusItem.button?.image = iconImage(color: activeColor, frame: frameIdx)
         }
@@ -2667,21 +2671,22 @@ final class StatusController: NSObject, NSMenuDelegate {
 
     func pulseIcon(frame: Int, color: NSColor?) -> NSImage? {
         let side: CGFloat = 18
-        let total = 20
-        let progress = CGFloat(frame % total) / CGFloat(total)
-        let scale: CGFloat = 0.3 + sin(progress * .pi) * 0.5
+        let total = 48
+        let t = CGFloat(frame % total) / CGFloat(total)
+        let breath = sin(t * .pi)
         let maxR: CGFloat = 6
-        let r = maxR * scale
-        let alpha: CGFloat = 0.3 + sin(progress * .pi) * 0.7
+        let r = maxR * (0.45 + breath * 0.55)
+        let alpha: CGFloat = 0.25 + breath * 0.75
+        let c = color ?? amber
 
         let img = NSImage(size: NSSize(width: side, height: side), flipped: false) { rect in
             guard let ctx = NSGraphicsContext.current?.cgContext else { return false }
             let cx = rect.midX, cy = rect.midY
-            NSColor.black.withAlphaComponent(alpha).setFill()
+            c.withAlphaComponent(alpha).setFill()
             ctx.fillEllipse(in: CGRect(x: cx - r, y: cy - r, width: r * 2, height: r * 2))
             return true
         }
-        img.isTemplate = true
+        img.isTemplate = false
         return img
     }
 
