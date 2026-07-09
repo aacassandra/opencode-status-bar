@@ -30,6 +30,14 @@
   <em>↑ Live status, animasi, dan break time overlay</em>
 </p>
 
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=lQw4NwSlyW8">
+    <img src="https://img.youtube.com/vi/lQw4NwSlyW8/maxresdefault.jpg" alt="Watch the video" width="600">
+  </a>
+  <br>
+  <em>📺 Klik untuk melihat video preview lengkap di YouTube</em>
+</p>
+
 ---
 
 ## ✨ What it shows
